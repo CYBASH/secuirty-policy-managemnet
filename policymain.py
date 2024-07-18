@@ -1,5 +1,6 @@
 import sqlite3
 from securitypolicy import Policy
+from hash import Password
 
 #connect to the database.
 conn = sqlite3.connect('organization.db')
@@ -173,11 +174,13 @@ if __name__ == "__main__":
 
     print(cursor.fetchall())
     '''
-    conn.commit()
+    #conn.commit()
 
 
 
 
+p = Password("Test@123")
+print(p.validation())
 
 
-
+p.login("Test@123")
