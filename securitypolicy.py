@@ -82,6 +82,7 @@ class Database:
         
         except TypeError:
             print("Email not found")
+            return False
     
     def getPassword(self , username):
         self.cursor.execute("""
@@ -93,6 +94,7 @@ class Database:
         
         except TypeError:
             print("User not found")
+            return False
 
     def getEmail(self , username):
         self.cursor.execute("""
@@ -104,6 +106,7 @@ class Database:
         
         except TypeError:
             print("User not found")
+            return False
 
     def isUsernameTaken(self , username):
         self.cursor.execute("""
