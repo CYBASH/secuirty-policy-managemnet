@@ -26,7 +26,6 @@ class ProjectInfo:
         self.openTempFile()
         t = threading.Thread(target=self.deleteTempFile)
         t.start()
-        t.join()
     
 
 if __name__ == '__main__':
