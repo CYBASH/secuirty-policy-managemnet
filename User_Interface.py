@@ -4,8 +4,6 @@ from securitypolicy import *
 from hash import *
 from ProjectInfo import *
 
-
-
 #Login Btn Definition
 def login():
     print("Login Btn CLicked")
@@ -18,7 +16,8 @@ def login():
         print("Logged in")
     else:
         print("Wrong password")
-    
+
+#Signup Btn Definition   
 def signup():
     print("Sign Up Btn CLicked")
 
@@ -44,10 +43,6 @@ def project_info():
 
 def startUI():
     root.mainloop()
-
-
-
-
 
 root = Tk()
 root.title("Security Policy Management Project")
@@ -93,7 +88,6 @@ password_label.grid(row=4, column=0, padx=40, pady=10, sticky=E)
 password_entry = Entry(root, show="*")
 password_entry.grid(row=4, column=1, padx=40, pady=10, sticky=W)
 
-
 #Login Btn
 login_btn = Button(root,
              text="Login",
@@ -102,7 +96,16 @@ login_btn = Button(root,
              font=("Verdana", 11, "bold"),
              padx=4,
              command=login) #Command to be defined
-login_btn.grid(row=5, column=0, padx=20, pady=10, columnspan=2)
+login_btn.grid(row=5, column=1, padx=20, pady=10, columnspan=2, sticky=W)
 
+#signup btn
+signup_btn = Button(root,
+             text="Sign Up",
+             bg="blue",
+             fg="white",
+             font=("Verdana", 11, "bold"),
+             padx=4,
+             command=signup) #Command to be defined
+signup_btn.grid(row=5, column=0, padx=150, pady=10, columnspan=2, sticky=W)
 
 startUI()
