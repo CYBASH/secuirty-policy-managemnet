@@ -1,15 +1,58 @@
 from tkinter import *
 from PIL import Image, ImageTk
-import webbrowser
+from securitypolicy import *
+from hash import *
+from ProjectInfo import *
+
+
+
+#Login Btn Definition
+def login():
+    print("Login Btn CLicked")
+
+    p = Password(password_entry.get())
+    p.encrypt()
+
+    d = Database()
+    if (p.getHashCode()) == (d.getPassword(username_entry.get())):
+        print("Logged in")
+    else:
+        print("Wrong password")
+    
+def signup():
+    print("Sign Up Btn CLicked")
+
+    d = Database()
+    d.insertCredentials(username_entry.get(), password_entry.get()) #also need to pass email_entry.get()
+
+#Project Info Btn definition
+def project_info():
+    html_content = """
+        <html>
+            <head>
+                <title>Project Info</title>
+            </head>
+        <body>
+            <h1>Project Info</h1>
+                <p>This is a sample project info page.</p>
+            </body>
+        </html>
+    """
+
+    project_info = ProjectInfo(html_content)
+    project_info.openTempFileInThread()
+
+def startUI():
+    root.mainloop()
+
+
+
+
 
 root = Tk()
 root.title("Security Policy Management Project")
 root.configure(bg="#505050")
 root.geometry('500x500')
-
-#Project Info Btn definition
-def project_info():
-    webbrowser.open('file:///C:/Users/sivay/Desktop/Security%20Policy%20Management/secuirty-policy-managemnet/sample_info.html')
 
 #Project Info Button 
 info_btn = Button(root,
@@ -50,9 +93,6 @@ password_label.grid(row=4, column=0, padx=40, pady=10, sticky=E)
 password_entry = Entry(root, show="*")
 password_entry.grid(row=4, column=1, padx=40, pady=10, sticky=W)
 
-#Login Btn Definition
-def login():
-    print("Login Btn CLicked")
 
 #Login Btn
 login_btn = Button(root,
@@ -64,4 +104,5 @@ login_btn = Button(root,
              command=login) #Command to be defined
 login_btn.grid(row=5, column=0, padx=20, pady=10, columnspan=2)
 
-root.mainloop()
+
+startUI()

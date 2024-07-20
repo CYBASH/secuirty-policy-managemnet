@@ -174,13 +174,20 @@ if __name__ == "__main__":
 
     print(cursor.fetchall())
     '''
-    #conn.commit()
+
+    cursor.execute("""
+        UPDATE credentials SET password = ? WHERE username = ?
+    """ , ('8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e' , 'testuser'))
+
+    conn.commit()
+
+    
 
 
 
 
 p = Password("Test@123")
-print(p.validation())
+print(p.encrypt())
 
 
 p.login("Test@123")

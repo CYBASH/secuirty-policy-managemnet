@@ -17,7 +17,6 @@ class Password:
         elif not self.has_special_char():
             return False
         else:
-            self.encrypt(self.user_Password)
             return True
 
     #checking the password cotaining atleast a uppercase letter
@@ -34,18 +33,15 @@ class Password:
         return any(char in special_char for char in self.user_Password)
 
     #encrypting the password to hash codes
-    def encrypt(self, password):
+    def encrypt(self):
         hashing=h.new('SHA256')
-        hashing.update(password.encode())
-        self.hashcode = hashing.hexdigest()
-        print("Encrypting password:",self.hashcode)
-        
-    
-    def login(self , password):
-        hashing=h.new('SHA256')
-        hashing.update(password.encode())
-        if(self.hashcode == hashing.hexdigest()):
-            print("Login Success")
+        if self.validation():
+            hashing.update(self.user_Password.encode())
+            self.hashcode = hashing.hexdigest()
+            print("Encrypting password:",self.hashcode)
         else:
-            print("Wrong Password")
+            print("Password is not valid")
+        
 
+    def getHashCode(self):
+        return self.hashcode
