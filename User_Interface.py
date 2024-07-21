@@ -41,13 +41,15 @@ def project_info():
     project_info = ProjectInfo(html_content)
     project_info.openTempFileInThread()
 
+#Start UI
 def startUI():
     root.mainloop()
 
 root = Tk()
 root.title("Security Policy Management Project")
 root.configure(bg="#505050")
-root.geometry('500x500')
+root.geometry('500x550')
+root.resizable(False, False)
 
 #Project Info Button 
 info_btn = Button(root,
