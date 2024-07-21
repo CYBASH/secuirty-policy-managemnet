@@ -40,7 +40,7 @@ class Password:
             self.hashcode = hashing.hexdigest()
             print("Encrypting password:",self.hashcode)
         else:
-            print("Password is not valid")
+            print("Password must contain a upper letter and a special character")
         
 
     def getHashCode(self):

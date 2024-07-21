@@ -48,7 +48,11 @@ def startUI():
 root = Tk()
 root.title("Security Policy Management Project")
 root.configure(bg="#505050")
+<<<<<<< HEAD
 root.geometry('500x550')
+=======
+root.geometry('500x500')
+>>>>>>> 0a8af6c7c0f8e133bc3b6c4a6b18cfd0cce1a843
 root.resizable(False, False)
 
 #Project Info Button 
