@@ -29,7 +29,7 @@ def enforce_policy():
 #Logout btn definition
 def logout():
     print("Logout Btn clicked")        
-
+    
 #Window dim specification
 root = Tk()
 root.title("Security Policy Management Project")

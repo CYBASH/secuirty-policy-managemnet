@@ -48,7 +48,6 @@ def startUI():
 root = Tk()
 root.title("Security Policy Management Project")
 root.configure(bg="#505050")
-root.geometry('500x550')
 root.geometry('500x500')
 root.resizable(False, False)
 
