@@ -20,7 +20,8 @@ def load_file():
         policies_list.config(state="normal")
         policies_list.delete("1.0", END)
         for policy in policies:
-            policies_list.insert(END, policy)   
+            policies_list.insert(END, policy) 
+        policies_list.config(state="disabled")  
 
 #enforce policy btn definition
 def enforce_policy():
@@ -29,7 +30,7 @@ def enforce_policy():
 #Logout btn definition
 def logout():
     print("Logout Btn clicked")        
-    
+
 #Window dim specification
 root = Tk()
 root.title("Security Policy Management Project")
