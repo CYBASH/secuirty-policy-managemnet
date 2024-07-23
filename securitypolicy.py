@@ -48,6 +48,14 @@ class Policy:
         """)
         for i in self.cursor.fetchall():
             print(i)
+    
+    def enforcePolicies(self , policyTuple):
+        for policy in policyTuple:
+            self.cursor.execute('''
+                INSERT OR REPLACE INTO policies (rowid, name, description, version)
+                VALUES (?, ?, ?, ?)
+            ''', policy)
+        self.conn.commit()
         
         
 

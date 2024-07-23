@@ -160,11 +160,11 @@ if __name__ == "__main__":
     conn.commit()
     '''
 
-    '''
+    cursor.execute("DROP TABLE policies")
     cursor.execute("""
         CREATE TABLE policies(name text , description text , version INT)
     """)
-    '''
+    
 
     #Name and Description Validation Code
     '''
@@ -174,11 +174,11 @@ if __name__ == "__main__":
 
     print(cursor.fetchall())
     '''
-
+    '''
     cursor.execute("""
         UPDATE credentials SET password = ? WHERE username = ?
     """ , ('8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e' , 'testuser'))
-
+'''
     conn.commit()
 
     
@@ -186,8 +186,8 @@ if __name__ == "__main__":
 
 
 
-p = Password("Test@123")
-print(p.encrypt())
+#p = Password("Test@123")
+#print(p.encrypt())
 
 
-p.login("Test@123")
+#p.login("Test@123")
