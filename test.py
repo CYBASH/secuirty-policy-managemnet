@@ -160,11 +160,17 @@ if __name__ == "__main__":
     conn.commit()
     '''
 
+    '''
     cursor.execute("DROP TABLE policies")
     cursor.execute("""
         CREATE TABLE policies(name text , description text , version INT)
     """)
-    
+    '''
+
+    cursor.execute("""
+        DELETE FROM policies WHERE rowid = 12
+    """
+    )
 
     #Name and Description Validation Code
     '''

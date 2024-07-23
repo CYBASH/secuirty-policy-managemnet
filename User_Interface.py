@@ -7,13 +7,14 @@ import re
 
 class User_Interface:
     #Login Btn Definition
-    def __init__(self, root):
+    def __init__(self, root, tempfile):
         self.root = root
         self.policyInterface = None
         self.root.title("Security Policy Management Project")
         self.root.configure(bg="#505050")
         self.root.geometry('500x500')
         self.root.resizable(False, False)
+        self.policyTempFile = tempfile
 
 
         #Project Info Button 
@@ -90,7 +91,7 @@ class User_Interface:
         if (self.p.getHashCode()) == (self.d.getPassword(self.username_entry.get())):
             print("Logged in")
             
-            policyUI = Policies_Interface(self.root, self.policyInterface)
+            policyUI = Policies_Interface(self.root, self.policyInterface, self.policyTempFile)
             policyUI.openPolicyInterface()
             
             
@@ -137,14 +138,19 @@ def clear_entries(window):
 
 
 class Policies_Interface:
-    def __init__(self, root ,policyInterface):
+    def __init__(self, root ,policyInterface, policyTempFile):
         self.root = root
         self.policyInterface = policyInterface
+        self.policyTempFile = policyTempFile
+
+    def policyInterfaceClosed(self):
+        self.root.destroy()
 
     def openPolicyInterface(self):
         hideWindow(self.root)
 
         policyInterface = Toplevel(self.root)
+        policyInterface.protocol("WM_DELETE_WINDOW", self.policyInterfaceClosed)
         self.policyInterface = policyInterface
         policyInterface.title("Security Policy Management Project")
         policyInterface.configure(bg="#505050")
@@ -240,8 +246,7 @@ class Policies_Interface:
         self.logout_btn.grid(row=5, column=0, padx=20, pady=(0,40), columnspan=2, sticky=N)
 
     def load_file(self):
-        policies = []
-        with open("policies.txt", "r") as file:
+        with open(self.policyTempFile, "r") as file:
             i = 0
             self.policies = file.readlines()
             self.policies_list.config(state="normal")
@@ -260,13 +265,6 @@ class Policies_Interface:
         else:
             self.addPolicyToFile()
             self.load_file()
-    
-            
-            
-
-            #print("Adding Policy")
-            #p = Policy(self.policy_entry.get(), self.desc_entry.get())
-            #p.insertPolicy()
         
 
     #update policy btn definition
@@ -278,15 +276,11 @@ class Policies_Interface:
             self.updatePolicyToFile()
             self.load_file()
 
-            
-            #p = Policy(self.policy_entry.get(), self.desc_entry.get())
-            #p.updatePolicy(self.policy_entry.get(), self.desc_entry.get())
-
     #enforce policy btn definition
     def enforcePolicy(self):
         print("Enforce Policy Btn clicked")
         p = Policy(self.policy_entry.get(), self.desc_entry.get())
-        x = self.parsePolicies("policies.txt")
+        x = self.parsePolicies(self.policyTempFile)
         p.enforcePolicies(x)
 
 
@@ -297,13 +291,13 @@ class Policies_Interface:
         hideWindow(self.policyInterface)
         showWindow(self.root)
     
-    def updatePolicyToFile(self, filename="policies.txt"):
+    def updatePolicyToFile(self):
         policyFound = False
-        with open("policies.txt", 'r') as file:
+        with open(self.policyTempFile, 'r') as file:
             lines = file.readlines()
         
         # Modify the content
-        with open("policies.txt", 'w') as file:
+        with open(self.policyTempFile, 'w') as file:
             for line in lines:
                 if self.policy_entry.get() in line:
                     match = re.match(r"^(\d+)\. (.*?): (.*?) \((v\d+)\)$", line.strip())
@@ -331,10 +325,10 @@ class Policies_Interface:
                     policies.append((id, name, description, version))
         return policies
     
-    def addPolicyToFile(self, filename="policies.txt"):
+    def addPolicyToFile(self):
         sentence = ""
 
-        with open("policies.txt", 'r') as file:
+        with open(self.policyTempFile, 'r') as file:
             lines = file.readlines()
             
             for line in lines:
@@ -343,7 +337,7 @@ class Policies_Interface:
                     return
 
 
-        with open("policies.txt", 'r') as file:
+        with open(self.policyTempFile, 'r') as file:
             lines = file.readlines()
             if lines:
                 match = re.match(r"^(\d+)\. (.*?): (.*?) \((v\d+)\)$", lines[-1].strip())
@@ -351,11 +345,11 @@ class Policies_Interface:
                     id, name, description, version = match.groups()
                     id = int(id) + 1
                     sentence = f"{id}. " + self.policy_entry.get() + ": " + self.desc_entry.get() + " (v1)"
-                    print("Sentence:", sentence)
-        with open(filename, 'a') as file:
+                    
+        with open(self.policyTempFile, 'a') as file:
             file.write(sentence + '\n')
 
-if __name__ == "__main__":
+def startMainUI(tempFileName):
     root = Tk()
-    app = User_Interface(root)
+    app = User_Interface(root, tempFileName)
     app.startUI()

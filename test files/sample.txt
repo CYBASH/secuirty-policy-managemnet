@@ -1,4 +1,4 @@
-1. Password Policy: test (v2)
+1. Password Policy: Enforce strong passwords with minimum length and complexity. (v1)
 2. Data Encryption Policy: Encrypt sensitive data both in transit and at rest. (v1)
 3. Access Control Policy: Define and enforce access permissions based on roles. (v1)
 4. Backup Policy: Regularly backup critical data and verify integrity. (v1)
@@ -8,5 +8,3 @@
 8. Physical Security Policy: Secure physical access to data centers and server rooms. (v1)
 9. Remote Access Policy: Regulate remote access to corporate networks and resources. (v1)
 10. Social Engineering Policy: Educate employees to recognize and report social engineering attacks. (v1)
-11. Paasword Policy: test123 (v1)
-12. Paasword Policy 1: test1234 (v3)
