@@ -1,8 +1,8 @@
 import tempfile
 import webbrowser
-import os
-import time
-import threading
+#import os
+#import time
+#import threading
 
 class ProjectInfo:
     def __init__(self , html_content):
@@ -17,15 +17,15 @@ class ProjectInfo:
     def openTempFile(self):
         webbrowser.open('file://' + self.temp_file_path)
     
-    def deleteTempFile(self):
-        time.sleep(60)
-        os.remove(self.temp_file_path)
+    #def deleteTempFile(self):
+    #    time.sleep(60)
+    #    os.remove(self.temp_file_path)
     
     def openTempFileInThread(self):
         self.createTempFile()
         self.openTempFile()
-        t = threading.Thread(target=self.deleteTempFile)
-        t.start()
+        #t = threading.Thread(target=self.deleteTempFile)
+        #t.start()
     
 
 if __name__ == '__main__':

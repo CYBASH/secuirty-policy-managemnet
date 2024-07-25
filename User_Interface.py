@@ -37,7 +37,7 @@ class User_Interface:
         self.heading.grid(row=1, column=0, columnspan=2, padx=40, pady=10) 
 
         #Picture
-        self.image = Image.open("Security_Policy_manage_pic.png")
+        self.image = Image.open("images/Security_Policy_manage_pic.png")
         self.dim = (200, 200)
         self.adj_img = self.image.resize(self.dim)
         self.photo = ImageTk.PhotoImage(self.adj_img)
@@ -111,12 +111,127 @@ class User_Interface:
         self.html_content = """
             <html>
                 <head>
-                    <title>Project Info</title>
+                    <title>
+                    Project Informaion
+                    </title>
+
+                    <style>
+                        .container{
+                        width: 60%;
+                        height: 180%;
+                        background-color:white;
+                        position: absolute;
+                        left: 270px;
+                        padding-left: 25px;
+                        padding-right: 25px;
+                        padding-top: 60px;
+                        border-color: grey 20px;
+                        }
+                        table,th,td{
+                        height: 60px;
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        text-align:left;
+                        padding: 13px;
+                        
+                        }
+                        img{
+                        width: 100;
+                        height: 100;
+                        position: absolute;
+                        top: 35px;;
+                        right: 35px; 
+                        border-radius: 50%;
+                        }
+                        .container{
+                        box-shadow: 5px 5px 5px 5px  gray;
+                        }
+                        th{
+                        
+                        background-color: hsla(120, 4%, 74%, 0.3);
+                        }
+                    </style>
+
                 </head>
-            <body>
-                <h1>Project Info</h1>
-                    <p>This is a sample project info page.</p>
-                </body>
+                    <body style="background-color: aliceblue;">
+                        <div class="container">
+                        <img src="pro4.jpeg" style="width:13%;height:10%;">
+                            <h1> Project Information </h1>
+                            <br>
+                                    <p>This project was developed  by <b> Anonymous Hacker </b>as a part of a <b>Cyber Security Internship</b>.This 
+                                    project is designed to <b>Secure the Organizations in Real World from Cyber Frauds performed by
+                                        Hackers.</b></p>
+                                <table style="width: 100%;">
+                                    <tr>
+                                    <th> Project Details </th>
+                                    <th> Value</th>
+                                    </tr>
+                                    <tr>
+                                    <td>Project Name</td>
+                                    <td>Security Policy Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Project Description</td>
+                                    <td> It involves creating, implement,and maintain policies that govern the Security
+                                        measures and practices within an organization to protect its information and resources.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Project Start Date</td>
+                                    <td>01-July-2024</td>
+                                </tr>
+                                <tr>
+                                    <td> Project End Date</td>
+                                    <td>24-August-2024</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Project Status</td>
+                                    <td><b>Completed</b></td>
+                                </tr>
+                            </table >
+                            <h2> Developer Details</h2>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Akurathi Sasidhar</td>
+                                    <td>sasidhardaicy@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Thota Satish Babu</td>
+                                    <td>22ktsatish5b6@gmail.com</td>
+                                </tr>
+                            <tr>
+                                <td> Gajivelli Venkata Jaya Sivaram</td>
+                                <td>sivaramgajivelli@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Mamidi jovel</td>
+                                <td>jovelmamidi20@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>sri supriya</td>
+                                <td>srisupriya@gmail.com</td>
+                            </tr> 
+                            </table>
+                            <h2>Company Details</h2>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Supraja Technologies</th>
+                                </tr>
+                                <tr> 
+                                    <td>Email</td>
+                                    <td> contact@suprajatechnologies.com</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </body>
             </html>
         """
 
