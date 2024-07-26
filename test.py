@@ -1,7 +1,7 @@
 import sqlite3
 from securitypolicy import Policy
 from hash import Password
-
+ 
 #connect to the database.
 conn = sqlite3.connect('organization.db')
 print("","Database Connected")
