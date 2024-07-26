@@ -214,8 +214,8 @@ class User_Interface:
                                 <td>jovelmamidi20@gmail.com</td>
                             </tr>
                             <tr>
-                                <td>sri supriya</td>
-                                <td>srisupriya@gmail.com</td>
+                                <td>Gogula Sri Supriya</td>
+                                <td>srisupriyagogula@gmail.com</td>
                             </tr> 
                             </table>
                             <h2>Company Details</h2>
