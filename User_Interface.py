@@ -14,6 +14,7 @@ class User_Interface:
         self.root.configure(bg="#505050")
         self.root.geometry('500x500')
         self.root.resizable(False, False)
+        self.root.iconbitmap("images/icon.ico")
         self.policyTempFile = tempfile
 
 
@@ -271,6 +272,7 @@ class Policies_Interface:
         policyInterface.configure(bg="#505050")
         policyInterface.geometry('500x500')
         policyInterface.resizable(False, False)
+        policyInterface.iconbitmap("images/icon.ico")
 
         self.policyNameLabel()
         self.policyDescriptionLabel()
