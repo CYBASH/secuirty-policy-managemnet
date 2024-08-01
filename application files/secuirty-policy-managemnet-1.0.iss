@@ -35,9 +35,9 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=D:\Cyber Security Intern\Project\secuirty-policy-managemnet\application files
+OutputDir=D:\secuirty-policy-managemnet\application files
 OutputBaseFilename=secuirty-policy-managemnet
-SetupIconFile=D:\Cyber Security Intern\Project\secuirty-policy-managemnet\images\icon.ico
+SetupIconFile=D:\secuirty-policy-managemnet\images\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -49,8 +49,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Cyber Security Intern\Project\secuirty-policy-managemnet\build\exe.win-amd64-3.12\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Cyber Security Intern\Project\secuirty-policy-managemnet\build\exe.win-amd64-3.12\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\secuirty-policy-managemnet\build\exe.win-amd64-3.11\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\secuirty-policy-managemnet\build\exe.win-amd64-3.11\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

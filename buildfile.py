@@ -36,7 +36,7 @@ setup(name='SECURITY PROJECT MANAGEMENT',
 additional_files = ["organization.db", "images/"]
 
 # Define the output directory
-output_dir = os.path.join("build", "exe.win-amd64-3.12")  # Adjust according to your Python version and platform
+output_dir = os.path.join("build", "exe.win-amd64-3.11")  # Adjust according to your Python version and platform
 
 # Copy additional files and directories
 for item in additional_files:
@@ -51,8 +51,8 @@ for item in additional_files:
 
 # Define the PowerShell command
 command = (
-    'mt.exe -manifest "D:/Cyber Security Intern/Project/secuirty-policy-managemnet/application files/runasadmin.manifest" '
-    '-outputresource:"D:/Cyber Security Intern/Project/secuirty-policy-managemnet/build/exe.win-amd64-3.12/secuirty-policy-managemnet.exe;1"'
+    'mt.exe -manifest "D:/secuirty-policy-managemnet/application files/runasadmin.manifest" '
+    '-outputresource:"D:/secuirty-policy-managemnet/build/exe.win-amd64-3.11/secuirty-policy-managemnet.exe;1"'
 )
 
 # Run the command using subprocess
