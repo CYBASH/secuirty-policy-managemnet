@@ -13,12 +13,29 @@ class User_Interface:
         self.root.title("Security Policy Management Project")
         self.root.configure(bg="#505050")
         self.root.geometry('500x500')
-        self.root.resizable(False, False)
+        self.root.resizable(True, True)
         self.root.iconbitmap("images/icon.ico")
         self.policyTempFile = tempfile
+        self.info_button()
+        self.heading()
+        self.picture()
+        self.username()
+        self.password()
+        self.login_button()
+        self.signup_button()
+        
+        self.center_widgets()
+        self.root.bind('<Configure>', self.on_resize)
 
+    def center_widgets(self):
+        for widget in self.root.winfo_children():
+            widget.place(anchor='center')
 
-        #Project Info Button 
+    def on_resize(self, event):
+        self.center_widgets()
+
+    #Project Info Button 
+    def info_button(self):        
         self.info_btn = Button(self.root,
                     text="Project Info",
                     bg="blue",
@@ -26,37 +43,42 @@ class User_Interface:
                     font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.project_info)
-        self.info_btn.grid(row=0, column=0, padx=20, pady=20, columnspan=2) 
+        self.info_btn.place(relx=0.5, rely=0.05, anchor='center')  
 
+    def heading(self):
         #Project Heading
-        self.heading = Label(self.root,
+        self.heading_lbl = Label(self.root,
                 bg="white",
                 fg="black",
                 padx=20,
                 text="Security Policy Management Project",
                 font=("Verdana", 14, "bold"))
-        self.heading.grid(row=1, column=0, columnspan=2, padx=40, pady=10) 
+        self.heading_lbl.place(relx=0.5, rely=0.15, anchor='center')
 
+    def picture(self):
         #Picture
         self.image = Image.open("images/Security_Policy_manage_pic.png")
         self.dim = (200, 200)
         self.adj_img = self.image.resize(self.dim)
         self.photo = ImageTk.PhotoImage(self.adj_img)
         self.image_label = Label(self.root, bg="#505050", image=self.photo)
-        self.image_label.grid(row=2, column=0, padx=50, pady=10, columnspan=2, sticky=EW)
+        self.image_label.place(relx=0.5, rely=0.45, anchor='center')
 
+    def username(self):
         #username
         self.username_label = Label(self.root, text="Username:", padx=9, font=("Verdana", 11, "bold"))
-        self.username_label.grid(row=3, column=0, padx=40, pady=10, sticky=E)  
+        self.username_label.place(relx=0.35, rely=0.7, anchor='center')  
         self.username_entry = Entry(self.root)
-        self.username_entry.grid(row=3, column=1, padx=40, pady=10, sticky=W)  
+        self.username_entry.place(relx=0.65, rely=0.7, anchor='center') 
 
+    def password(self):
         #password
         self.password_label = Label(self.root, text="Password:", padx=10, font=("Verdana", 11, "bold"))
-        self.password_label.grid(row=4, column=0, padx=40, pady=10, sticky=E)  
+        self.password_label.place(relx=0.35, rely=0.8, anchor='center')   
         self.password_entry = Entry(self.root, show="*")
-        self.password_entry.grid(row=4, column=1, padx=40, pady=10, sticky=W)
+        self.password_entry.place(relx=0.65, rely=0.8, anchor='center')  
 
+    def login_button(self):
         #Login Btn
         self.login_btn = Button(self.root,
                     text="Login",
@@ -65,8 +87,9 @@ class User_Interface:
                     font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.login) #Command to be defined
-        self.login_btn.grid(row=5, column=1, padx=20, pady=10, columnspan=2, sticky=W)
+        self.login_btn.place(relx=0.6, rely=0.9, anchor='center')  
 
+    def signup_button(self):
         #signup btn
         self.signup_btn = Button(self.root,
                     text="Sign Up",
@@ -75,7 +98,7 @@ class User_Interface:
                     font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.signup) #Command to be defined
-        self.signup_btn.grid(row=5, column=0, padx=150, pady=10, columnspan=2, sticky=W)
+        self.signup_btn.place(relx=0.4, rely=0.9, anchor='center')  
 
     #Start UI
     def startUI(self):
@@ -271,7 +294,7 @@ class Policies_Interface:
         policyInterface.title("Security Policy Management Project")
         policyInterface.configure(bg="#505050")
         policyInterface.geometry('500x500')
-        policyInterface.resizable(False, False)
+        policyInterface.resizable(True, True)
         policyInterface.iconbitmap("images/icon.ico")
 
         self.policyNameLabel()
@@ -284,28 +307,28 @@ class Policies_Interface:
 
     def policyNameLabel(self):
         #Policy Name
-        policy_label = Label(self.policyInterface, text="Policy Name:", padx=5, font=("Verdana", 11))
-        policy_label.grid(row=0, column=0, padx=(100, 10), pady=(25, 10), sticky=E)  
+        self.policy_label = Label(self.policyInterface, text="Policy Name:", padx=5, font=("Verdana", 11))
+        self.policy_label.place(relx=0.35, rely=0.05, anchor='center')   
         self.policy_entry = Entry(self.policyInterface)
-        self.policy_entry.grid(row=0, column=1, padx=(10, 100), pady=(25, 10), sticky=W) 
+        self.policy_entry.place(relx=0.65, rely=0.05, anchor='center')  
     
     def policyDescriptionLabel(self):
         #Policy Description
-        desc_label = Label(self.policyInterface, text="Description:", padx=10, font=("Verdana", 11))
-        desc_label.grid(row=1, column=0, padx=(100, 10), pady=10, sticky=E)  
+        self.desc_label = Label(self.policyInterface, text="Description:", padx=10, font=("Verdana", 11))
+        self.desc_label.place(relx=0.35, rely=0.15, anchor='center')  
         self.desc_entry = Entry(self.policyInterface)
-        self.desc_entry.grid(row=1, column=1, padx=(10, 100), pady=10, sticky=W) 
+        self.desc_entry.place(relx=0.65, rely=0.15, anchor='center')  
 
     def addPolicyButton(self):
         #Add_policy Btn
-        add_policy_btn = Button(self.policyInterface,
+        self.add_policy_btn = Button(self.policyInterface,
                     text="Add Policy",
                     bg="white",
                     fg="black",
                     font=("Verdana", 11),
                     padx=2,
                     command=self.addPolicy)
-        add_policy_btn.grid(row=2, column=0, padx=20, pady=10, sticky=E)
+        self.add_policy_btn.place(relx=0.35, rely=0.25, anchor='center')  
     
     def updatePolicyButton(self):
         #Update_policy btn
@@ -316,29 +339,38 @@ class Policies_Interface:
                     font=("Verdana", 11),
                     padx=4,
                     command=self.updatePolicy)
-        self.update_policy_btn.grid(row=2, column=1, padx=20, pady=10, sticky=W)
+        self.update_policy_btn.place(relx=0.65, rely=0.25, anchor='center')  
 
     def displayPolicyList(self):
-        #Policies_list
-        policies_frame = Frame(self.policyInterface)
-        policies_frame.grid(row=3, column=0, columnspan=2, padx=20, pady=10, sticky=NSEW)
-        self.policies_list = Text(policies_frame, wrap="none", font=("Verdana", 11), height=10)
-        self.policies_list.grid(row=0, column=0, sticky=NSEW)
+        # Policies_list
+        policies_frame = Frame(self.policyInterface, bg="#505050")
+        policies_frame.place(relx=0.5, rely=0.55, anchor='center')
+
+        self.policies_list = Text(policies_frame, wrap="none", font=("Verdana", 11), height=10, width=40)
+        self.policies_list.grid(row=0, column=0, sticky='nsew')
+
         yscrollbar = Scrollbar(policies_frame, orient="vertical", command=self.policies_list.yview)
-        yscrollbar.grid(row=0, column=1, sticky=NS)
+        yscrollbar.grid(row=0, column=1, sticky='ns')
+
         xscrollbar = Scrollbar(policies_frame, orient="horizontal", command=self.policies_list.xview)
-        xscrollbar.grid(row=1, column=0, sticky=EW)
+        xscrollbar.grid(row=1, column=0, sticky='ew')
+
         self.policies_list.config(yscrollcommand=yscrollbar.set, xscrollcommand=xscrollbar.set)
 
-        self.policyInterface.grid_rowconfigure(3, weight=1)
-        self.policyInterface.grid_columnconfigure(0, weight=1)
-        self.policyInterface.grid_columnconfigure(1, weight=5)
-        self.policyInterface.grid_rowconfigure(4, weight=5)
         policies_frame.grid_rowconfigure(0, weight=1)
         policies_frame.grid_columnconfigure(0, weight=1)
 
+        self.policyInterface.grid_rowconfigure(3, weight=1)
+        self.policyInterface.grid_columnconfigure(1, weight=1)
+        self.policyInterface.grid_columnconfigure(1, weight=5)
+        self.policyInterface.grid_rowconfigure(4, weight=5)
+        self.policyInterface.bind('<Configure>', lambda event: self.resize_policy_frame(policies_frame))
         self.load_file()
-    
+
+    def resize_policy_frame(self, frame):
+        width = self.policyInterface.winfo_width()
+        height = self.policyInterface.winfo_height()
+        frame.place_configure(width=width*0.8, height=height*0.4)    
 
     def enforcePolicyButton(self):
         #Enforce Policy Btn
@@ -349,7 +381,7 @@ class Policies_Interface:
                     font=("Verdana", 11),
                     padx=4,
                     command=self.enforcePolicy)
-        self.enforce_policy_btn.grid(row=4, column=0, padx=20, pady=5, columnspan=2)
+        self.enforce_policy_btn.place(relx=0.5, rely=0.85, anchor='center')
 
     def logoutButton(self):
         #Logout Btn
@@ -360,7 +392,7 @@ class Policies_Interface:
                     font=("Verdana", 11),
                     padx=4,
                     command=self.logout)
-        self.logout_btn.grid(row=5, column=0, padx=20, pady=(0,40), columnspan=2, sticky=N)
+        self.logout_btn.place(relx=0.5, rely=0.95, anchor='center')
 
     def load_file(self):
         with open(self.policyTempFile, "r") as file:
@@ -465,6 +497,10 @@ class Policies_Interface:
                     
         with open(self.policyTempFile, 'a') as file:
             file.write(sentence + '\n')
+
+class Signup_Interface():
+    def __init__(self):
+        pass
 
 def startMainUI(tempFileName):
     root = Tk()
