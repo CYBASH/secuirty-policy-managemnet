@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image, ImageTk
 from securitypolicy import *
 from hash import *
@@ -104,31 +105,54 @@ class User_Interface:
     def startUI(self):
         self.root.mainloop()
 
+    
+    def matchPasswords():
+        pass
+    
+    
     def login(self):
         print("Login Btn CLicked")
 
-        self.p = Password(self.password_entry.get())
-        self.p.encrypt()
-
-        self.d = Database()
+        if self.username_entry.get() == "":
+            messagebox.showinfo( "Warning", "Please enter USERNAME")
         
-        if (self.p.getHashCode()) == (self.d.getPassword(self.username_entry.get())):
-            print("Logged in")
-            
-            policyUI = Policies_Interface(self.root, self.policyInterface, self.policyTempFile)
-            policyUI.openPolicyInterface()
-            
-            
-
+        elif self.password_entry.get() == "":
+            messagebox.showinfo( "Warning", "Please enter PASSWORD")
+        
         else:
-            print("Wrong password")
+            self.p = Password(self.password_entry.get())
+            self.p.encrypt()
+
+            self.d = Database()
+        
+        
+        
+        
+            if (self.p.getHashCode()) == (self.d.getPassword(self.username_entry.get())):
+                print("Logged in")
+                #messagebox.showinfo( "Warning", "Logged in")
+                policyUI = Policies_Interface(self.root, self.policyInterface, self.policyTempFile)
+                policyUI.openPolicyInterface()
+                
+                
+
+            else:
+                print("Wrong password")
+                messagebox.showinfo( "Warning", "Wrong Username or Password")
 
     #Signup Btn Definition   
     def signup(self):
         print("Sign Up Btn CLicked")
 
-        self.d = Database()
-        self.d.insertCredentials(self.username_entry.get(), self.password_entry.get()) #also need to pass email_entry.get()
+        if self.username_entry.get() == "":
+            messagebox.showinfo( "Warning", "Please enter USERNAME")
+        
+        elif self.password_entry.get() == "":
+            messagebox.showinfo( "Warning", "Please enter PASSWORD")
+        
+        else:
+            self.d = Database()
+            self.d.insertCredentials(self.username_entry.get(), self.password_entry.get()) #also need to pass email_entry.get()
 
     #Project Info Btn definition
     def project_info(self):

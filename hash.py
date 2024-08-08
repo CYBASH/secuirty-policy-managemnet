@@ -1,4 +1,5 @@
 import hashlib as h
+from tkinter import messagebox
 
 class Password:
     def __init__(self, user_Password):
@@ -41,6 +42,8 @@ class Password:
             print("Encrypting password:",self.hashcode)
         else:
             print("Password must contain a upper letter and a special character")
+            messagebox.showinfo( "Warning", "Password must contain a uppercase letter , lowercase letter and a special character")
+            
         
 
     def getHashCode(self):
