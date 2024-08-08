@@ -33,41 +33,39 @@ class Signup_Interface:
 
     def username(self):
         #username
-        self.username_label = self.canvas.create_text(175, 90,
+        self.username_label = self.canvas.create_text(128, 90,
                                                   text="Username ", 
                                                   font=("Verdana", 12, "bold"),
                                                   fill="white")
         self.username_entry = Entry(self.root, width=30, font=("Verdana", 10))
-        self.canvas.create_window(370, 90, anchor='center', window=self.username_entry) 
+        self.canvas.create_window(390, 90, anchor='center', window=self.username_entry) 
 
     def email(self):
         #email
-        self.email_label = self.canvas.create_text(155, 140,
+        self.email_label = self.canvas.create_text(107, 140,
                                  text="Email ", 
                                  font=("Verdana", 12, "bold"),
                                  fill="white")
         self.email_entry = Entry(self.root, width=30, font=("Verdana", 10))
-        self.canvas.create_window(370, 140, anchor='center', window=self.email_entry)
+        self.canvas.create_window(390, 140, anchor='center', window=self.email_entry)
 
     def password(self):
         #password
-        self.password_label = Label(self.root, 
-                                    text="Password:", 
-                                    padx=44, 
-                                    font=("Verdana", 11, "bold"))
-        self.password_label.place(relx=0.27, rely=0.35, anchor='center')   
-        self.password_entry = Entry(self.root, show="*", width=35)
-        self.password_entry.place(relx=0.9, rely=0.35, anchor='e')  
+        self.password_label = self.canvas.create_text(128, 190,
+                                 text="Password ", 
+                                 font=("Verdana", 12, "bold"),
+                                 fill="white") 
+        self.password_entry = Entry(self.root, width=30, font=("Verdana", 10))
+        self.canvas.create_window(390, 190, anchor='center', window=self.password_entry)
 
     def confirm_password(self):
         #password
-        self.confirm_password_label = Label(self.root, 
-                                            text="Confirm Password:", 
-                                            padx=10, 
-                                            font=("Verdana", 11, "bold"))
-        self.confirm_password_label.place(relx=0.27, rely=0.45, anchor='center')   
-        self.confirm_password_entry = Entry(self.root, show="*", width=35)
-        self.confirm_password_entry.place(relx=0.9, rely=0.45, anchor='e')  
+        self.confirm_password_label = self.canvas.create_text(165, 240,
+                                 text="Confirm Password ", 
+                                 font=("Verdana", 12, "bold"),
+                                 fill="white") 
+        self.confirm_password_entry = Entry(self.root, width=30, font=("Verdana", 10))
+        self.canvas.create_window(390, 240, anchor='center', window=self.confirm_password_entry)
     
     def signup_button(self):
         #signup btn
