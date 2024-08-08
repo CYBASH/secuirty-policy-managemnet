@@ -12,8 +12,8 @@ class User_Interface:
         self.policyInterface = None
         self.root.title("Security Policy Management Project")
         self.root.configure(bg="#505050")
-        self.root.geometry('500x500')
-        self.root.resizable(True, True)
+        self.root.geometry('600x600')
+        self.root.resizable(False, False)
         self.root.iconbitmap("images/icon.ico")
         self.policyTempFile = tempfile
         self.info_button()
@@ -136,7 +136,7 @@ class User_Interface:
             <html>
                 <head>
                     <title>
-                    Project Informaion
+                        Project Information
                     </title>
 
                     <style>
