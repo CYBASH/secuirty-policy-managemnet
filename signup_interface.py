@@ -82,9 +82,39 @@ class Signup_Interface:
     def compare_password(self):
         if(self.password_entry.get() == self.confirm_password_entry.get()):
             print('same')
+            self.openVerifyWindow()
         
         else:
             print('not same')
+    
+    def hideWindow(self,window):
+        window.withdraw()
+
+    def showWindow(self,window):
+        window.deiconify()
+    
+    def verifyInterfaceClosed(self):
+        self.root.destroy()
+    
+    def openVerifyWindow(self):
+        self.hideWindow(self.root)
+        verifyInterface = Toplevel(self.root)
+        
+        verifyInterface.protocol("WM_DELETE_WINDOW", self.verifyInterfaceClosed)
+        self.verifyInterface = verifyInterface
+        
+        self.verifyInterface.title("Security Policy Management Project")
+        self.verifyInterface.configure(bg="#505050")
+        self.verifyInterface.geometry('600x600')
+        self.verifyInterface.resizable(False, False)
+        self.verifyInterface.iconbitmap("images/icon.ico")
+
+        self.background_image = ImageTk.PhotoImage(Image.open("images/background.jpeg"))
+        self.canvas = Canvas(self.verifyInterface, width=600, height=600)
+        self.canvas.pack(fill="both", expand=True)
+        self.canvas.create_image(0, 0, image=self.background_image, anchor="nw")
+
+        self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
 
 if __name__ == "__main__":
     root = Tk()
