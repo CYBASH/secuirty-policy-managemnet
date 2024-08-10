@@ -67,7 +67,7 @@ class Database:
         self.cursor = self.conn.cursor()
     
 
-    def insertCredentials(self , username , password , email):
+    def insertCredentials(self , username , password , email="test@gmail.com"):
         p = Password(password)
         p.encrypt()
         hashPassword = p.getHashCode()

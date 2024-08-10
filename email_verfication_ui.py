@@ -9,13 +9,34 @@ from signup_interface import *
 class Email_verification_Interface:
     def __init__(self, root):
         self.root = root
-        self.root.title("Security Policy Management Project")
-        self.root.configure(bg="#505050")
-        self.root.geometry('600x600')
-        self.root.resizable(False, False)
-        self.root.iconbitmap("images/icon.ico")
+
+    def emailVerifyInterfaceClosed(self):
+        self.emailVerifyUI.destroy()
+        self.showWindow(self.root)
+    
+    def hideWindow(self,window):
+        window.withdraw()
+
+    def showWindow(self,window):
+        window.deiconify()
+    
+    def verifyInterfaceClosed(self):
+        self.root.destroy()
+    
+    def startUI(self):
+        
+        emailVerifyUI = Toplevel(self.root)
+        emailVerifyUI.protocol("WM_DELETE_WINDOW", self.emailVerifyInterfaceClosed)
+        self.emailVerifyUI = emailVerifyUI
+        self.hideWindow(self.root)
+        
+        self.emailVerifyUI.title("Security Policy Management Project")
+        self.emailVerifyUI.configure(bg="#505050")
+        self.emailVerifyUI.geometry('600x600')
+        self.emailVerifyUI.resizable(False, False)
+        self.emailVerifyUI.iconbitmap("images/icon.ico")
         self.background_image = ImageTk.PhotoImage(Image.open("images/background.jpeg"))
-        self.canvas = Canvas(self.root, width=600, height=600)
+        self.canvas = Canvas(self.emailVerifyUI, width=600, height=600)
         self.canvas.pack(fill="both", expand=True)
         self.canvas.create_image(0, 0, image=self.background_image, anchor="nw")
         self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
@@ -24,11 +45,6 @@ class Email_verification_Interface:
         self.statement()
         self.otp()
         self.verify_button()
-        self.startUI()
-
-    
-    def startUI(self):
-        self.root.mainloop()
 
     def heading(self):
         #heading
@@ -50,12 +66,12 @@ class Email_verification_Interface:
                                  text="Enter OTP ", 
                                  font=("Verdana", 15, "bold"),
                                  fill="white") 
-        self.otp_entry = Entry(self.root, width=20, font=("Verdana", 15), justify="center")
+        self.otp_entry = Entry(self.emailVerifyUI, width=20, font=("Verdana", 15), justify="center")
         self.canvas.create_window(390, 270, anchor='center', window=self.otp_entry)
     
     def verify_button(self):
         #verify btn
-        self.verify_btn = Button(self.root,
+        self.verify_btn = Button(self.emailVerifyUI,
                     text="Verify Email",
                     bg="#12ECC0",
                     fg="white",

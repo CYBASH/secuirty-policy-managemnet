@@ -5,6 +5,7 @@ from securitypolicy import *
 from hash import *
 from ProjectInfo import *
 import re
+from signup_interface import *
 
 class User_Interface:
     #Login Btn Definition
@@ -143,16 +144,11 @@ class User_Interface:
     #Signup Btn Definition   
     def signup(self):
         print("Sign Up Btn CLicked")
-
-        if self.username_entry.get() == "":
-            messagebox.showinfo( "Warning", "Please enter USERNAME")
         
-        elif self.password_entry.get() == "":
-            messagebox.showinfo( "Warning", "Please enter PASSWORD")
-        
-        else:
-            self.d = Database()
-            self.d.insertCredentials(self.username_entry.get(), self.password_entry.get()) #also need to pass email_entry.get()
+        self.d = Database()
+        #self.d.insertCredentials(self.username_entry.get(), self.password_entry.get()) #also need to pass email_entry.get()
+        signupUI = Signup_Interface(self.root)
+        signupUI.startUI()
 
     #Project Info Btn definition
     def project_info(self):
@@ -522,9 +518,6 @@ class Policies_Interface:
         with open(self.policyTempFile, 'a') as file:
             file.write(sentence + '\n')
 
-class Signup_Interface():
-    def __init__(self):
-        pass
 
 def startMainUI(tempFileName):
     root = Tk()
