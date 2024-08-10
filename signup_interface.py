@@ -64,7 +64,7 @@ class Signup_Interface:
                                  text="Password ", 
                                  font=("Verdana", 12, "bold"),
                                  fill="white") 
-        self.password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10))
+        self.password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10), show="*")
         self.canvas.create_window(390, 190, anchor='center', window=self.password_entry)
 
     def confirm_password(self):
@@ -73,7 +73,7 @@ class Signup_Interface:
                                  text="Confirm Password ", 
                                  font=("Verdana", 12, "bold"),
                                  fill="white") 
-        self.confirm_password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10))
+        self.confirm_password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10), show="*")
         self.canvas.create_window(390, 240, anchor='center', window=self.confirm_password_entry)
     
     def signup_button(self):

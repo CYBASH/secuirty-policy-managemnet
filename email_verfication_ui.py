@@ -56,17 +56,19 @@ class Email_verification_Interface:
     def statement(self):
         #statement
         self.statement_label = self.canvas.create_text(300, 210,
-                                 text="Type in the OTP we sent to example@gmail.com. ", 
+                                 text="OTP is sent to ", 
                                  font=("Verdana", 12, "bold"),
                                  fill="grey", justify="center")
+
 
     def otp(self):
         #otp
         self.otp_label = self.canvas.create_text(168, 270,
                                  text="Enter OTP ", 
                                  font=("Verdana", 15, "bold"),
-                                 fill="white") 
-        self.otp_entry = Entry(self.emailVerifyUI, width=20, font=("Verdana", 15), justify="center")
+                                 fill="white")
+        vcmd = (self.emailVerifyUI.register(validate_numeric_input), '%P')
+        self.otp_entry = Entry(self.emailVerifyUI, width=20, font=("Verdana", 15), justify="center", validate="key", validatecommand=vcmd) 
         self.canvas.create_window(390, 270, anchor='center', window=self.otp_entry)
     
     def verify_button(self):
@@ -84,6 +86,9 @@ class Email_verification_Interface:
     def verify_email(self):
         pass
 
+
+def validate_numeric_input(input):
+    return input.isdigit() and len(input) <= 8 or input == ""
 
 if __name__ == "__main__":
     root = Tk()
