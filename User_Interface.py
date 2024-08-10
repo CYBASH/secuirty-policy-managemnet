@@ -47,18 +47,16 @@ class User_Interface:
 
     def heading(self):
         #Project Heading
-        self.heading_lbl = Label(self.root,
-                bg="white",
-                fg="black",
-                padx=20,
-                text="Security Policy Management Project",
-                font=("Verdana", 14, "bold"))
-        self.heading_lbl.place(relx=0.5, rely=0.15, anchor='center')
+        self.username_label = self.canvas.create_text(300, 90,
+                                                  text="Security Policy Management", 
+                                                  font=("Verdana", 24, "bold"),
+                                                  fill="white",
+                                                  justify="center")
 
     def picture(self):
         #Picture
         self.image = Image.open("images/Security_Policy_manage_pic.png")
-        self.dim = (200, 200)
+        self.dim = (250, 250)
         self.adj_img = self.image.resize(self.dim)
         self.photo = ImageTk.PhotoImage(self.adj_img)
         self.image_label = Label(self.root, bg="#505050", image=self.photo)
@@ -66,26 +64,30 @@ class User_Interface:
 
     def username(self):
         #username
-        self.username_label = Label(self.root, text="Username:", padx=9, font=("Verdana", 11, "bold"))
-        self.username_label.place(relx=0.35, rely=0.7, anchor='center')  
-        self.username_entry = Entry(self.root)
-        self.username_entry.place(relx=0.65, rely=0.7, anchor='center') 
+        self.username_label = self.canvas.create_text(180, 440,
+                                                  text="Username ", 
+                                                  font=("Verdana", 12, "bold"),
+                                                  fill="white")
+        self.username_entry = Entry(self.root, width=20, font=("Verdana", 12))
+        self.canvas.create_window(360, 440, anchor='center', window=self.username_entry)
 
     def password(self):
         #password
-        self.password_label = Label(self.root, text="Password:", padx=10, font=("Verdana", 11, "bold"))
-        self.password_label.place(relx=0.35, rely=0.8, anchor='center')   
-        self.password_entry = Entry(self.root, show="*")
-        self.password_entry.place(relx=0.65, rely=0.8, anchor='center')  
+        self.password_label = self.canvas.create_text(180, 480,
+                                 text="Password ", 
+                                 font=("Verdana", 12, "bold"),
+                                 fill="white") 
+        self.password_entry = Entry(self.root, width=20, font=("Verdana", 12), show="*")
+        self.canvas.create_window(360, 480, anchor='center', window=self.password_entry)
 
     def login_button(self):
         #Login Btn
         self.login_btn = Button(self.root,
                     text="Login",
-                    bg="blue",
+                    bg="#12ECC0",
                     fg="white",
                     font=("Verdana", 11, "bold"),
-                    padx=4,
+                    padx=9,
                     command=self.login) #Command to be defined
         self.login_btn.place(relx=0.6, rely=0.9, anchor='center')  
 
@@ -93,7 +95,7 @@ class User_Interface:
         #signup btn
         self.signup_btn = Button(self.root,
                     text="Sign Up",
-                    bg="blue",
+                    bg="#12ECC0",
                     fg="white",
                     font=("Verdana", 11, "bold"),
                     padx=4,
