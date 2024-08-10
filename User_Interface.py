@@ -17,6 +17,13 @@ class User_Interface:
         self.root.geometry('600x600')
         self.root.resizable(False, False)
         self.root.iconbitmap("images/icon.ico")
+        self.background_image = ImageTk.PhotoImage(Image.open("images/background.jpeg"))
+        self.canvas = Canvas(self.root , width=600, height=600)
+        self.canvas.pack(fill="both", expand=True)
+        self.canvas.create_image(0, 0, image=self.background_image, anchor="nw")
+
+        self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
+        
         self.policyTempFile = tempfile
         self.info_button()
         self.heading()
@@ -25,16 +32,7 @@ class User_Interface:
         self.password()
         self.login_button()
         self.signup_button()
-        
-        self.center_widgets()
-        self.root.bind('<Configure>', self.on_resize)
 
-    def center_widgets(self):
-        for widget in self.root.winfo_children():
-            widget.place(anchor='center')
-
-    def on_resize(self, event):
-        self.center_widgets()
 
     #Project Info Button 
     def info_button(self):        
@@ -313,9 +311,14 @@ class Policies_Interface:
         self.policyInterface = policyInterface
         policyInterface.title("Security Policy Management Project")
         policyInterface.configure(bg="#505050")
-        policyInterface.geometry('500x500')
+        policyInterface.geometry('600x600')
         policyInterface.resizable(True, True)
         policyInterface.iconbitmap("images/icon.ico")
+        self.background_image = ImageTk.PhotoImage(Image.open("images/background.jpeg"))
+        self.canvas = Canvas(self.policyInterface, width=600, height=600)
+        self.canvas.pack(fill="both", expand=True)
+        self.canvas.create_image(0, 0, image=self.background_image, anchor="nw")
+        self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
 
         self.policyNameLabel()
         self.policyDescriptionLabel()

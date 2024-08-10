@@ -23,7 +23,9 @@ class Email_verification_Interface:
     def verifyInterfaceClosed(self):
         self.root.destroy()
     
-    def startUI(self):
+    def startUI(self,email):
+        
+        self.email = email
         
         emailVerifyUI = Toplevel(self.root)
         emailVerifyUI.protocol("WM_DELETE_WINDOW", self.emailVerifyInterfaceClosed)
@@ -56,9 +58,9 @@ class Email_verification_Interface:
     def statement(self):
         #statement
         self.statement_label = self.canvas.create_text(300, 210,
-                                 text="OTP is sent to ", 
+                                 text="OTP is sent to "  + self.email, 
                                  font=("Verdana", 12, "bold"),
-                                 fill="grey", justify="center")
+                                 fill="white", justify="center")
 
 
     def otp(self):

@@ -107,7 +107,8 @@ class Signup_Interface:
     
     def openVerifyWindow(self):
         emailVerifyUI = Email_verification_Interface(self.signupUI)
-        emailVerifyUI.startUI()
+        email = self.email_entry.get()
+        emailVerifyUI.startUI(email)
         
 
 if __name__ == "__main__":

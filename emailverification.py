@@ -1,5 +1,7 @@
 #   https://youtu.be/HZqfyFA-xfk?si=eCKsUM4WetPMBEJZ        ->  Reference
-#   nnqg pbdp ojsg cklj     ->  App Password
+#   nnqg pbdp ojsg cklj     ->  App Password for 22kt1a0595@gmail.com
+
+#   SPM - mqot ougz ojjl vwcl   ->  App Password FOR spmproject66@gmail.com
 
 import random
 import smtplib
@@ -11,12 +13,12 @@ from tkinter import messagebox
 class EmailVerification():
     def __init__(self , mail):
         self.otp = None
-        self.fromMail = '22kt1a0595@gmail.com' 
+        self.fromMail = 'spmproject66@gmail.com' 
         self.toMail = mail
     
     def generateOTP(self):
         self.otp = ""
-        for i in range(0,6):
+        for i in range(0,8):
             self.otp += str(random.randint(0,9))
         print(self.otp)
         
@@ -25,7 +27,7 @@ class EmailVerification():
         server = smtplib.SMTP('smtp.gmail.com' , 587)
         server.starttls()
         
-        server.login(self.fromMail, 'nnqg pbdp ojsg cklj')
+        server.login(self.fromMail, 'mqot ougz ojjl vwcl')
         
         html_content = f"""
         <html>
