@@ -38,8 +38,8 @@ class User_Interface:
     def info_button(self):        
         self.info_btn = Button(self.root,
                     text="Project Info",
-                    bg="blue",
-                    fg="white",
+                    bg="black",
+                    fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.project_info)
@@ -67,7 +67,7 @@ class User_Interface:
         self.username_label = self.canvas.create_text(180, 440,
                                                   text="Username ", 
                                                   font=("Verdana", 12, "bold"),
-                                                  fill="white")
+                                                  fill="#12ECC0")
         self.username_entry = Entry(self.root, width=20, font=("Verdana", 12))
         self.canvas.create_window(360, 440, anchor='center', window=self.username_entry)
 
@@ -76,7 +76,7 @@ class User_Interface:
         self.password_label = self.canvas.create_text(180, 480,
                                  text="Password ", 
                                  font=("Verdana", 12, "bold"),
-                                 fill="white") 
+                                 fill="#12ECC0") 
         self.password_entry = Entry(self.root, width=20, font=("Verdana", 12), show="*")
         self.canvas.create_window(360, 480, anchor='center', window=self.password_entry)
 
@@ -84,8 +84,8 @@ class User_Interface:
         #Login Btn
         self.login_btn = Button(self.root,
                     text="Login",
-                    bg="#12ECC0",
-                    fg="white",
+                    bg="black",
+                    fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
                     padx=9,
                     command=self.login) #Command to be defined
@@ -95,8 +95,8 @@ class User_Interface:
         #signup btn
         self.signup_btn = Button(self.root,
                     text="Sign Up",
-                    bg="#12ECC0",
-                    fg="white",
+                    bg="black",
+                    fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.signup) #Command to be defined
@@ -314,7 +314,7 @@ class Policies_Interface:
         policyInterface.title("Security Policy Management Project")
         policyInterface.configure(bg="#505050")
         policyInterface.geometry('600x600')
-        policyInterface.resizable(True, True)
+        policyInterface.resizable(False, False)
         policyInterface.iconbitmap("images/icon.ico")
         self.background_image = ImageTk.PhotoImage(Image.open("images/background.jpeg"))
         self.canvas = Canvas(self.policyInterface, width=600, height=600)
@@ -332,26 +332,32 @@ class Policies_Interface:
 
     def policyNameLabel(self):
         #Policy Name
-        self.policy_label = Label(self.policyInterface, text="Policy Name:", padx=5, font=("Verdana", 11))
-        self.policy_label.place(relx=0.35, rely=0.05, anchor='center')   
-        self.policy_entry = Entry(self.policyInterface)
-        self.policy_entry.place(relx=0.65, rely=0.05, anchor='center')  
+        self.policy_label = self.canvas.create_text(200, 45,
+                                                  text="Policy Name ", 
+                                                  font=("Verdana", 12, "bold"),
+                                                  fill="#12ECC0",
+                                                  justify="center")   
+        self.policy_entry = Entry(self.policyInterface, width=20, font=("Verdana", 12))
+        self.canvas.create_window(380, 45, anchor='center', window=self.policy_entry)
     
     def policyDescriptionLabel(self):
         #Policy Description
-        self.desc_label = Label(self.policyInterface, text="Description:", padx=10, font=("Verdana", 11))
-        self.desc_label.place(relx=0.35, rely=0.15, anchor='center')  
-        self.desc_entry = Entry(self.policyInterface)
-        self.desc_entry.place(relx=0.65, rely=0.15, anchor='center')  
+        self.desc_label = self.canvas.create_text(200, 95,
+                                                  text="Description ", 
+                                                  font=("Verdana", 12, "bold"),
+                                                  fill="#12ECC0",
+                                                  justify="center")   
+        self.desc_entry = Entry(self.policyInterface, width=20, font=("Verdana", 12))
+        self.canvas.create_window(380, 95, anchor='center', window=self.desc_entry)
 
     def addPolicyButton(self):
         #Add_policy Btn
         self.add_policy_btn = Button(self.policyInterface,
                     text="Add Policy",
-                    bg="white",
-                    fg="black",
-                    font=("Verdana", 11),
-                    padx=2,
+                    bg="black",
+                    fg="#12ECC0",
+                    font=("Verdana", 11, "bold"),
+                    padx=8,
                     command=self.addPolicy)
         self.add_policy_btn.place(relx=0.35, rely=0.25, anchor='center')  
     
@@ -359,19 +365,25 @@ class Policies_Interface:
         #Update_policy btn
         self.update_policy_btn = Button(self.policyInterface,
                     text="Update Policy",
-                    bg="white",
-                    fg="black",
-                    font=("Verdana", 11),
+                    bg="black",
+                    fg="#12ECC0",
+                    font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.updatePolicy)
         self.update_policy_btn.place(relx=0.65, rely=0.25, anchor='center')  
 
     def displayPolicyList(self):
         # Policies_list
-        policies_frame = Frame(self.policyInterface, bg="#505050")
+        policies_frame = Frame(self.policyInterface, bg="white")
         policies_frame.place(relx=0.5, rely=0.55, anchor='center')
 
-        self.policies_list = Text(policies_frame, wrap="none", font=("Verdana", 11), height=10, width=40)
+        self.policies_list = Text(policies_frame, 
+                                  wrap="none", 
+                                  font=("Verdana", 12), 
+                                  height=10, 
+                                  width=50,
+                                  bg="black",
+                                  fg="#12ECC0")
         self.policies_list.grid(row=0, column=0, sticky='nsew')
 
         yscrollbar = Scrollbar(policies_frame, orient="vertical", command=self.policies_list.yview)
@@ -389,35 +401,29 @@ class Policies_Interface:
         self.policyInterface.grid_columnconfigure(1, weight=1)
         self.policyInterface.grid_columnconfigure(1, weight=5)
         self.policyInterface.grid_rowconfigure(4, weight=5)
-        self.policyInterface.bind('<Configure>', lambda event: self.resize_policy_frame(policies_frame))
-        self.load_file()
-
-    def resize_policy_frame(self, frame):
-        width = self.policyInterface.winfo_width()
-        height = self.policyInterface.winfo_height()
-        frame.place_configure(width=width*0.8, height=height*0.4)    
+        self.load_file()   
 
     def enforcePolicyButton(self):
         #Enforce Policy Btn
         self.enforce_policy_btn = Button(self.policyInterface,
                     text="Enforce Policy",
-                    bg="white",
-                    fg="black",
-                    font=("Verdana", 11),
+                    bg="black",
+                    fg="#12ECC0",
+                    font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.enforcePolicy)
-        self.enforce_policy_btn.place(relx=0.5, rely=0.85, anchor='center')
+        self.enforce_policy_btn.place(relx=0.5, rely=0.8, anchor='center')
 
     def logoutButton(self):
         #Logout Btn
         self.logout_btn = Button(self.policyInterface,
                     text="Logout",
-                    bg="white",
-                    fg="black",
-                    font=("Verdana", 11),
+                    bg="black",
+                    fg="#12ECC0",
+                    font=("Verdana", 11, "bold"),
                     padx=4,
                     command=self.logout)
-        self.logout_btn.place(relx=0.5, rely=0.95, anchor='center')
+        self.logout_btn.place(relx=0.5, rely=0.9, anchor='center')
 
     def load_file(self):
         with open(self.policyTempFile, "r") as file:
