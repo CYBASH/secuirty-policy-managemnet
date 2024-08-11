@@ -34,59 +34,72 @@ class Signup_Interface:
 
         self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
 
+        self.heading()
         self.username()
         self.email()
         self.password()
         self.confirm_password()
         self.signup_button()
 
+    def heading(self):
+        #Project Heading
+        self.heading_label = self.canvas.create_text(300, 110, 
+                                                     text="Create a new account!", 
+                                                     font=("Verdana", 24, "bold"),
+                                                     fill="white", 
+                                                     justify="center")
+
     def username(self):
         #username
-        self.username_label = self.canvas.create_text(128, 90,
+        self.username_label = self.canvas.create_text(128, 200,
                                                   text="Username ", 
                                                   font=("Verdana", 12, "bold"),
-                                                  fill="white")
-        self.username_entry = Entry(self.signupUI, width=30, font=("Verdana", 10))
-        self.canvas.create_window(390, 90, anchor='center', window=self.username_entry) 
+                                                  fill="#12ECC0")
+        self.username_entry = Entry(self.signupUI, width=25, font=("Verdana", 12))
+        self.canvas.create_window(390, 200, anchor='center', window=self.username_entry) 
 
     def email(self):
         #email
-        self.email_label = self.canvas.create_text(107, 140,
+        self.email_label = self.canvas.create_text(107, 260,
                                  text="Email ", 
                                  font=("Verdana", 12, "bold"),
-                                 fill="white")
-        self.email_entry = Entry(self.signupUI, width=30, font=("Verdana", 10))
-        self.canvas.create_window(390, 140, anchor='center', window=self.email_entry)
+                                 fill="#12ECC0")
+        self.email_entry = Entry(self.signupUI, width=25, font=("Verdana", 12))
+        self.canvas.create_window(390, 260, anchor='center', window=self.email_entry)
 
     def password(self):
         #password
-        self.password_label = self.canvas.create_text(128, 190,
+        self.password_label = self.canvas.create_text(128, 320,
                                  text="Password ", 
                                  font=("Verdana", 12, "bold"),
-                                 fill="white") 
-        self.password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10), show="*")
-        self.canvas.create_window(390, 190, anchor='center', window=self.password_entry)
+                                 fill="#12ECC0") 
+        self.password_entry = Entry(self.signupUI, width=25, font=("Verdana", 12), show="*")
+        self.canvas.create_window(390, 320, anchor='center', window=self.password_entry)
 
     def confirm_password(self):
         #password
-        self.confirm_password_label = self.canvas.create_text(165, 240,
+        self.confirm_password_label = self.canvas.create_text(165, 380,
                                  text="Confirm Password ", 
                                  font=("Verdana", 12, "bold"),
-                                 fill="white") 
-        self.confirm_password_entry = Entry(self.signupUI, width=30, font=("Verdana", 10), show="*")
-        self.canvas.create_window(390, 240, anchor='center', window=self.confirm_password_entry)
+                                 fill="#12ECC0") 
+        self.confirm_password_entry = Entry(self.signupUI, width=25, font=("Verdana", 12), show="*")
+        self.canvas.create_window(390, 380, anchor='center', window=self.confirm_password_entry)
     
     def signup_button(self):
         #signup btn
-        self.signup_btn = Button(self.signupUI,
+        border_frame = Frame(self.signupUI,
+                         bg="#12ECC0", 
+                         bd=2) 
+        border_frame.place(relx=0.5, rely=0.8, anchor='center')
+
+        self.signup_btn = Button(border_frame,
                     text="Sign Up",
-                    bg="blue",
-                    fg="white",
+                    bg="black",
+                    fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
-                    padx=10,
                     width=10,
                     command=self.compare_password) #Command to be defined
-        self.signup_btn.place(relx=0.5, rely=0.6, anchor='center')  
+        self.signup_btn.pack()
 
     def compare_password(self):
         if(self.password_entry.get() == self.confirm_password_entry.get()):

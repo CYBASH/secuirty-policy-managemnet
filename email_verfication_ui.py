@@ -50,40 +50,44 @@ class Email_verification_Interface:
 
     def heading(self):
         #heading
-        self.heading_label = self.canvas.create_text(300, 150,
-                                 text="Confirm your Email ", 
+        self.heading_label = self.canvas.create_text(300, 160,
+                                 text="Confirm your Email!", 
                                  font=("Verdana", 25, "bold"),
                                  fill="white")
 
     def statement(self):
         #statement
-        self.statement_label = self.canvas.create_text(300, 210,
+        self.statement_label = self.canvas.create_text(300, 220,
                                  text="OTP is sent to "  + self.email, 
                                  font=("Verdana", 12, "bold"),
-                                 fill="white", justify="center")
+                                 fill="#12ECC0", justify="center")
 
 
     def otp(self):
         #otp
-        self.otp_label = self.canvas.create_text(168, 270,
+        self.otp_label = self.canvas.create_text(168, 280,
                                  text="Enter OTP ", 
                                  font=("Verdana", 15, "bold"),
                                  fill="white")
         vcmd = (self.emailVerifyUI.register(validate_numeric_input), '%P')
-        self.otp_entry = Entry(self.emailVerifyUI, width=20, font=("Verdana", 15), justify="center", validate="key", validatecommand=vcmd) 
-        self.canvas.create_window(390, 270, anchor='center', window=self.otp_entry)
+        self.otp_entry = Entry(self.emailVerifyUI, width=18, font=("Verdana", 15), justify="center", validate="key", validatecommand=vcmd) 
+        self.canvas.create_window(390, 280, anchor='center', window=self.otp_entry)
     
     def verify_button(self):
         #verify btn
-        self.verify_btn = Button(self.emailVerifyUI,
+        border_frame = Frame(self.emailVerifyUI,
+                         bg="#12ECC0", 
+                         bd=2) 
+        border_frame.place(relx=0.5, rely=0.6, anchor='center')
+
+        self.verify_btn = Button(border_frame,
                     text="Verify Email",
-                    bg="#12ECC0",
-                    fg="white",
+                    bg="black",
+                    fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
-                    padx=10,
                     width=10,
                     command=self.verify_email) #Command to be defined
-        self.verify_btn.place(relx=0.5, rely=0.6, anchor='center')  
+        self.verify_btn.pack() 
 
     def verify_email(self):
         pass
