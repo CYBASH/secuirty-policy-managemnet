@@ -7,12 +7,14 @@ from ProjectInfo import *
 import re
 from signup_interface import *
 
+
 class User_Interface:
     #Login Btn Definition
     def __init__(self, root, tempfile):
         self.root = root
         self.policyInterface = None
         self.root.title("Security Policy Management Project")
+        root.protocol("WM_DELETE_WINDOW", self.rootInterfaceClosed)
         self.root.configure(bg="#505050")
         self.root.geometry('600x600')
         self.root.resizable(False, False)
@@ -33,6 +35,8 @@ class User_Interface:
         self.login_button()
         self.signup_button()
 
+    def rootInterfaceClosed(self):
+        self.root.destroy()
 
     #Project Info Button 
     def info_button(self):      
@@ -295,7 +299,7 @@ class User_Interface:
         """
 
         self.project_info = ProjectInfo(self.html_content)
-        self.project_info.openTempFileInThread()
+        #self.project_info.openTempFileInThread()
 
 def hideWindow(window):
     window.withdraw()

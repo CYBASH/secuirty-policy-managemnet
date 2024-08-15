@@ -3,8 +3,9 @@ from PIL import Image, ImageTk
 from securitypolicy import *
 from hash import *
 from ProjectInfo import *
-import re
 from email_verfication_ui import Email_verification_Interface
+from emailverification import EmailVerification
+
 
 
 class Signup_Interface:
@@ -103,7 +104,7 @@ class Signup_Interface:
 
     def compare_password(self):
         if(self.password_entry.get() == self.confirm_password_entry.get()):
-            print('same')
+            self.sendOTP()
             self.openVerifyWindow()
         
         else:
@@ -119,9 +120,24 @@ class Signup_Interface:
         self.root.destroy()
     
     def openVerifyWindow(self):
-        emailVerifyUI = Email_verification_Interface(self.signupUI)
+        self.emailVerifyUI = Email_verification_Interface(self.signupUI , self.emailVerify)
         email = self.email_entry.get()
-        emailVerifyUI.startUI(email)
+        self.emailVerifyUI.startUI(email)
+        print("Verify window opened")
+        
+        
+        
+        
+        
+    def sendOTP(self):
+        message = '''
+            Thank you for Signing up for Security Policy Management Tool.
+            
+        '''
+        
+        self.emailVerify = EmailVerification(self.email_entry.get())
+        self.emailVerify.generateOTP()
+        self.emailVerify.sendOTP(message)
         
 
 if __name__ == "__main__":

@@ -53,9 +53,11 @@ class EmailVerification():
         if self.otp == str(enteredOTP):
             print("Correct OTP")
             messagebox.showinfo( "Information", "Sign up successfully")
+            return True
         else:
             print("Wrong OTP")
             messagebox.showinfo( "Warning", "Please enter correct OTP")
+            return False
         
 
 

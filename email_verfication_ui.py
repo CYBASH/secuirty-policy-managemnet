@@ -3,12 +3,16 @@ from PIL import Image, ImageTk
 from securitypolicy import *
 from hash import *
 from ProjectInfo import *
-from signup_interface import *
+import os
+import sys
 
 
 class Email_verification_Interface:
-    def __init__(self, root):
+    UIclosed = False
+    
+    def __init__(self, root , emailVerify):
         self.root = root
+        self.emailVerify = emailVerify
 
     def emailVerifyInterfaceClosed(self):
         self.emailVerifyUI.destroy()
@@ -89,8 +93,15 @@ class Email_verification_Interface:
                     command=self.verify_email) #Command to be defined
         self.verify_btn.pack() 
 
+    def restart_program(self):
+        print("Restarting script...")
+        os.execv(sys.executable, ['python'] + sys.argv)
+            
+    
     def verify_email(self):
-        pass
+        if self.emailVerify.validateOTP(self.otp_entry.get()):
+            self.restart_program()
+            
 
 
 def validate_numeric_input(input):
