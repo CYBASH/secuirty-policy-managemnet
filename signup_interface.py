@@ -120,7 +120,7 @@ class Signup_Interface:
         self.root.destroy()
     
     def openVerifyWindow(self):
-        self.emailVerifyUI = Email_verification_Interface(self.signupUI , self.emailVerify)
+        self.emailVerifyUI = Email_verification_Interface(self.signupUI , self.emailVerify , self.username_entry.get() , self.password_entry.get())
         email = self.email_entry.get()
         self.emailVerifyUI.startUI(email)
         print("Verify window opened")

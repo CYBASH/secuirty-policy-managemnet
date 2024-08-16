@@ -128,7 +128,10 @@ class User_Interface:
 
     #Start UI
     def startUI(self):
-        self.root.mainloop()    
+        self.root.mainloop()
+        
+    def close(self):
+        self.root.destroy()
     
     def login(self):
         print("Login Btn CLicked")
@@ -299,7 +302,7 @@ class User_Interface:
         """
 
         self.project_info = ProjectInfo(self.html_content)
-        #self.project_info.openTempFileInThread()
+        self.project_info.openTempFileInThread()
 
 def hideWindow(window):
     window.withdraw()

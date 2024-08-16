@@ -79,6 +79,8 @@ class Database:
         self.cursor.execute("""
             INSERT INTO credentials(username , password , email) VALUES(?,?,?)
         """ , (username , hashPassword , email))
+        
+        self.conn.commit()
 
     
     def getUsername(self , email):

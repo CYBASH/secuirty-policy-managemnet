@@ -5,14 +5,17 @@ from hash import *
 from ProjectInfo import *
 import os
 import sys
+from securitypolicy import Database
 
 
 class Email_verification_Interface:
     UIclosed = False
     
-    def __init__(self, root , emailVerify):
+    def __init__(self, root , emailVerify , username , password):
         self.root = root
         self.emailVerify = emailVerify
+        self.username = username
+        self.password = password
 
     def emailVerifyInterfaceClosed(self):
         self.emailVerifyUI.destroy()
@@ -96,10 +99,13 @@ class Email_verification_Interface:
     def restart_program(self):
         print("Restarting script...")
         os.execv(sys.executable, ['python'] + sys.argv)
+        
             
     
     def verify_email(self):
         if self.emailVerify.validateOTP(self.otp_entry.get()):
+            d = Database()
+            d.insertCredentials(self.username , self.password , self.email)
             self.restart_program()
             
 

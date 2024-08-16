@@ -57,4 +57,4 @@ command = (
 
 # Run the command using subprocess
 result = subprocess.run(['powershell', '-Command', command], capture_output=True, text=True)
-
+print(result)

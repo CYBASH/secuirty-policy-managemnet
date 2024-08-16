@@ -6,7 +6,6 @@ import os
 import atexit
 import shutil
 
-
 def createTempFile():
     temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.txt')
     filename = temp_file.name
