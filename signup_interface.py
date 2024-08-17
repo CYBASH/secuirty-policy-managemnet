@@ -35,6 +35,7 @@ class Signup_Interface:
 
         self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
 
+        self.backbtn()
         self.heading()
         self.username()
         self.email()
@@ -42,10 +43,23 @@ class Signup_Interface:
         self.confirm_password()
         self.signup_button()
 
+    def backbtn(self):
+        back_img = Image.open('images/back_btn_image.png').resize((25, 25))
+        self.backbtn_img = ImageTk.PhotoImage(back_img)
+        backbutton = Button(self.signupUI, 
+                            image=self.backbtn_img, 
+                            bg="black",
+                            borderwidth=0,
+                            activebackground="black",
+                            width="18px",
+                            height="18px",
+                            command=self.back)
+        backbutton.place(relx=0.03, rely=0.03)
+
     def heading(self):
         #Project Heading
         self.heading_label = self.canvas.create_text(300, 110, 
-                                                     text="Create a new account!", 
+                                                     text="Create a new account", 
                                                      font=("Verdana", 24, "bold"),
                                                      fill="white", 
                                                      justify="center")
@@ -126,7 +140,8 @@ class Signup_Interface:
         print("Verify window opened")
         
         
-        
+    def back(self):
+        print("Back Btn Clicked")
         
         
     def sendOTP(self):

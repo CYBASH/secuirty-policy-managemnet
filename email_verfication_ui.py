@@ -50,10 +50,24 @@ class Email_verification_Interface:
         self.canvas.create_image(0, 0, image=self.background_image, anchor="nw")
         self.background_color = self.background_image._PhotoImage__photo.get(0, 0)
 
+        self.backbtn()
         self.heading()
         self.statement()
         self.otp()
         self.verify_button()
+
+    def backbtn(self):
+        back_img = Image.open('images/back_btn_image.png').resize((25, 25))
+        self.backbtn_img = ImageTk.PhotoImage(back_img)
+        backbutton = Button(self.emailVerifyUI, 
+                            image=self.backbtn_img, 
+                            bg="black",
+                            borderwidth=0,
+                            activebackground="black",
+                            width="18px",
+                            height="18px",
+                            command=self.back)
+        backbutton.place(relx=0.03, rely=0.03)
 
     def heading(self):
         #heading
@@ -107,6 +121,9 @@ class Email_verification_Interface:
             d = Database()
             d.insertCredentials(self.username , self.password , self.email)
             self.restart_program()
+
+    def back(self):
+        print("Back Btn Clicked")
             
 
 
