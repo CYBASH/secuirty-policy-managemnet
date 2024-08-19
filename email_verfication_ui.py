@@ -6,6 +6,7 @@ from ProjectInfo import *
 import os
 import sys
 from securitypolicy import Database
+from emailverification import EmailVerification
 
 
 class Email_verification_Interface:
@@ -67,7 +68,7 @@ class Email_verification_Interface:
                             activebackground="black",
                             width="18px",
                             height="18px",
-                            command=self.back)
+                            command=self.emailVerifyInterfaceClosed)
         backbutton.place(relx=0.03, rely=0.03)
 
     def heading(self):
@@ -129,7 +130,14 @@ class Email_verification_Interface:
         self.canvas.tag_bind(self.resend_label, "<Button-1>", self.on_resend_label_click)
 
     def on_resend_label_click(self, event):
-        print("Resend Label Clicked")
+        message = '''
+            Thank you for Signing up for Security Policy Management Tool.
+            
+        '''
+        
+        self.emailVerify = EmailVerification(self.email)
+        self.emailVerify.generateOTP()
+        self.emailVerify.sendOTP(message)
 
     def restart_program(self):
         print("Restarting script...")
@@ -140,9 +148,6 @@ class Email_verification_Interface:
             d = Database()
             d.insertCredentials(self.username , self.password , self.email)
             self.restart_program()
-
-    def back(self):
-        print("Back Btn Clicked")
 
 def validate_numeric_input(input):
     return input.isdigit() and len(input) <= 8 or input == ""

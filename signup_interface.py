@@ -53,7 +53,7 @@ class Signup_Interface:
                             activebackground="black",
                             width="18px",
                             height="18px",
-                            command=self.back)
+                            command=self.signupInterfaceClosed)
         backbutton.place(relx=0.03, rely=0.03)
 
     def heading(self):
@@ -143,8 +143,9 @@ class Signup_Interface:
         print("Verify window opened")
         
         
-    def back(self):
-        print("Back Btn Clicked")
+    # def back(self):
+    #     print("Back Btn Clicked")
+    #     self.signupInterfaceClosed()
         
         
     def sendOTP(self):
