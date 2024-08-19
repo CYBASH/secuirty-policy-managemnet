@@ -55,6 +55,7 @@ class Email_verification_Interface:
         self.statement()
         self.otp()
         self.verify_button()
+        self.resend_btn()
 
     def backbtn(self):
         back_img = Image.open('images/back_btn_image.png').resize((25, 25))
@@ -106,15 +107,33 @@ class Email_verification_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     width=10,
                     command=self.verify_email) #Command to be defined
         self.verify_btn.pack() 
 
+    def resend_btn(self):
+        self.question_label = self.canvas.create_text(250, 420, 
+                                                      text="Didn't receive the code? ",
+                                                      font=("Verdana", 12),
+                                                      fill="white", 
+                                                      justify="center")
+        
+        self.resend_label = self.canvas.create_text(400, 420,
+                                                    text=" Resend code",
+                                                    font=("Verdana", 12),
+                                                    fill="#12ECC0",
+                                                    justify="center")
+        
+        self.canvas.tag_bind(self.resend_label, "<Button-1>", self.on_resend_label_click)
+
+    def on_resend_label_click(self, event):
+        print("Resend Label Clicked")
+
     def restart_program(self):
         print("Restarting script...")
-        os.execv(sys.executable, ['python'] + sys.argv)
-        
-            
+        os.execv(sys.executable, ['python'] + sys.argv)    
     
     def verify_email(self):
         if self.emailVerify.validateOTP(self.otp_entry.get()):
@@ -124,8 +143,6 @@ class Email_verification_Interface:
 
     def back(self):
         print("Back Btn Clicked")
-            
-
 
 def validate_numeric_input(input):
     return input.isdigit() and len(input) <= 8 or input == ""

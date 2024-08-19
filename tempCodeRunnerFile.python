@@ -1,0 +1,25 @@
+import tkinter as tk
+
+def on_label_click():
+    print("Label clicked!")
+
+root = tk.Tk()
+root.geometry("300x200")  # Set window size to 300x200
+
+label = tk.Label(root, text="Click Me", bg="lightblue", fg="black", font=("Arial", 14), width=20, height=2)
+label.pack(pady=50)
+
+# Make the label behave like a button
+label.bind("<Button-1>", lambda event: on_label_click())  # Left-click event
+
+# Change appearance on hover (optional)
+def on_enter(event):
+    label.config(bg="darkblue", fg="white")
+
+def on_leave(event):
+    label.config(bg="lightblue", fg="black")
+
+label.bind("<Enter>", on_enter)
+label.bind("<Leave>", on_leave)
+
+root.mainloop()

@@ -43,13 +43,15 @@ class User_Interface:
         border_frame = Frame(self.root,
                          bg="#12ECC0", 
                          bd=2) 
-        border_frame.place(relx=0.5, rely=0.05, anchor='center')  
+        border_frame.place(relx=0.5, rely=0.06, anchor='center')  
 
         self.info_btn = Button(border_frame,
                     text="Project Info",
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     padx=4,
                     command=self.project_info)
         self.info_btn.pack()  
@@ -106,6 +108,8 @@ class User_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     width=8,
                     command=self.login) #Command to be defined
         self.login_btn.pack()  
@@ -122,6 +126,8 @@ class User_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     width=8,
                     command=self.signup) #Command to be defined
         self.signup_btn.pack()  
@@ -384,6 +390,8 @@ class Policies_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     width=12,
                     command=self.addPolicy)
         self.add_policy_btn.pack()  
@@ -400,6 +408,8 @@ class Policies_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     width=12,
                     command=self.updatePolicy)
         self.update_policy_btn.pack() 
@@ -458,6 +468,8 @@ class Policies_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     padx=4,
                     command=self.enforcePolicy)
         self.enforce_policy_btn.pack()
@@ -474,6 +486,8 @@ class Policies_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",
                     padx=4,
                     command=self.logout)
         self.logout_btn.pack()

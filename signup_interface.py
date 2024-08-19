@@ -112,8 +112,11 @@ class Signup_Interface:
                     bg="black",
                     fg="#12ECC0",
                     font=("Verdana", 11, "bold"),
+                    activebackground="#12ECC0",
+                    activeforeground="black",   
                     width=10,
                     command=self.compare_password) #Command to be defined
+    
         self.signup_btn.pack()
 
     def compare_password(self):
